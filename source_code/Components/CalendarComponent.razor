@@ -1,0 +1,188 @@
+@inject IJSRuntime JsRuntime
+
+<div class="calendar">
+    <CalendarHeader
+        currentMonth="@currentMonth"
+        currentYear="@currentYear"
+        GoToPreviousMonth="@GoToPreviousMonth"
+        GoToNextMonth="@GoToNextMonth"/>
+
+    <div class="calendar-body">
+        @if (isSideBarOpen)
+        {
+            <SideBar Date="@_selectedDate" CloseSideBar="@CloseSideBar" UpdateDayComponent="@UpdateDayComponent"/>
+        }
+        else
+        {
+            <div class="side-bar-opener" @onclick="() => OpenSideBar(_selectedDate)">
+                <img src="img/left-arrow.svg"/>
+            </div>
+        }
+
+        <div class="calendar-container @currentAnimation">
+            <WeekDayNamesRow/>
+
+            <CascadingValue Value="dateToUpdate">
+                @for (var i = 0; i < weeksInMonth; i++)
+                {
+                    var daysInWeek = GenerateWeekRow(i);
+
+                    if (currentMonthNumber == initialMonthNumber && currentYear == DateTime.Now.Year && daysInWeek.Contains(currentDay))
+                    {
+                        <WeekRow OnDateSelect="OpenSideBar" Days="daysInWeek" CurrentDay="@currentDay" CurrentMonth="@currentMonthNumber" CurrentYear="@currentYear"/>
+                    }
+                    else
+                    {
+                        <WeekRow OnDateSelect="OpenSideBar" Days="daysInWeek" CurrentMonth="@currentMonthNumber" CurrentYear="@currentYear"/>
+                    }
+                }
+            </CascadingValue>
+
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private int numberOfDays;
+    private string currentMonth = string.Empty;
+    private int currentYear;
+    private int currentDay;
+    private int weeksInMonth;
+    private int startDayOffset; // Days to skip for the first week
+    private int currentMonthNumber;
+    private int initialMonthNumber;
+    private string currentAnimation = "";
+    private string dateToUpdate = "";
+    private bool isSideBarOpen = false;
+    private string _selectedDate;
+
+    private Dictionary<int, string> monthDictionary = new()
+    {
+        { 1, "January" },
+        { 2, "February" },
+        { 3, "March" },
+        { 4, "April" },
+        { 5, "May" },
+        { 6, "June" },
+        { 7, "July" },
+        { 8, "August" },
+        { 9, "September" },
+        { 10, "October" },
+        { 11, "November" },
+        { 12, "December" }
+    };
+
+
+
+    protected override void OnInitialized()
+    {
+        initialMonthNumber = DateTime.Now.Month;
+        currentDay = DateTime.Now.Day;
+        currentMonthNumber = initialMonthNumber;
+        InitializeCalendar(currentMonthNumber, DateTime.Now.Year);
+        _selectedDate = DateTime.Now.ToString("dd.MM.yyyy");
+    }
+
+    private void InitializeCalendar(int month, int year)
+    {
+        currentMonth = monthDictionary[month];
+        currentYear = year;
+
+        numberOfDays = GetNumberOfDaysInMonth(month, year);
+        startDayOffset = GetStartDayOffset(month, year);
+        weeksInMonth = (int)Math.Ceiling((numberOfDays + startDayOffset) / 7.0);
+    }
+
+    private void SetAnimation(bool nextMonth)
+    {
+        currentAnimation = nextMonth ? "left" : "right";
+    }
+
+    public async Task GoToNextMonth()
+    {
+        if (currentMonthNumber < 12)
+        {
+            currentMonthNumber++;
+        }
+        else
+        {
+            currentYear++;
+            currentMonthNumber = 1;
+        }
+
+        InitializeCalendar(currentMonthNumber, currentYear);
+        currentMonth = monthDictionary[currentMonthNumber];
+        StateHasChanged();
+        
+        SetAnimation(true);
+        await Task.Delay(500);
+        currentAnimation = string.Empty;
+    }
+
+    public async Task GoToPreviousMonth()
+    {
+        if (currentMonthNumber == 1)
+        {
+            currentYear -= 1;
+            currentMonthNumber = 12;
+        }
+        else
+        {
+            currentMonthNumber -= 1;
+        }
+
+        InitializeCalendar(currentMonthNumber, currentYear);
+        currentMonth = monthDictionary[currentMonthNumber];
+        StateHasChanged();
+        
+        SetAnimation(false);
+        await Task.Delay(500);
+        currentAnimation = string.Empty;
+    }
+
+    public void OpenSideBar(string date)
+    {
+        if (!isSideBarOpen)
+        {
+            isSideBarOpen = true;
+        }
+
+        _selectedDate = date;
+    }
+
+    public void CloseSideBar()
+    {
+        isSideBarOpen = false;
+    }
+
+    private int GetNumberOfDaysInMonth(int monthNumber, int year)
+    {
+        return DateTime.DaysInMonth(year, monthNumber);
+    }
+
+    private int GetStartDayOffset(int monthNumber, int year)
+    {
+        var firstDayOfMonth = new DateTime(year, monthNumber, 1);
+        return ((int)firstDayOfMonth.DayOfWeek + 6) % 7;
+    }
+
+    private List<int> GenerateWeekRow(int weekRow)
+    {
+        var daysInWeek = new List<int>();
+
+        for (var j = 0; j < 7; j++)
+        {
+            var dayNumber = weekRow * 7 + j - startDayOffset + 1;
+            daysInWeek.Add(dayNumber);
+        }
+
+        return daysInWeek;
+    }
+
+    public void UpdateDayComponent(string Date)
+    {
+        dateToUpdate = Date;
+        StateHasChanged();
+    }
+}

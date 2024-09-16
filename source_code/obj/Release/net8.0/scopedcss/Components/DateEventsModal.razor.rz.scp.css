@@ -1,0 +1,147 @@
+.overlay[b-5ki5grmzyg] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+.modal[b-5ki5grmzyg] {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 550;
+    padding: 20px;
+    max-width: 90%;
+}
+
+.modal-header[b-5ki5grmzyg] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.modal-header h3[b-5ki5grmzyg] {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.modal-close[b-5ki5grmzyg] {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.modal-close:hover[b-5ki5grmzyg] {
+    color: #f44336;
+}
+
+.modal-content[b-5ki5grmzyg] {
+    margin-top: 20px;
+}
+
+.form-group[b-5ki5grmzyg] {
+    margin-bottom: 15px;
+}
+
+.form-group label[b-5ki5grmzyg] {
+    font-weight: 600;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control[b-5ki5grmzyg] {
+    width: 90%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #f9f9f9;
+}
+
+.form-control:focus[b-5ki5grmzyg] {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+textarea.form-control[b-5ki5grmzyg] {
+    height: 75px;
+    resize: none;
+}
+
+.btn[b-5ki5grmzyg] {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover[b-5ki5grmzyg] {
+    background-color: #0056b3;
+}
+
+.modal[b-5ki5grmzyg] {
+    animation: fadeIn-b-5ki5grmzyg 0.3s ease-in-out;
+}
+
+@keyframes fadeIn-b-5ki5grmzyg {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .modal[b-5ki5grmzyg] {
+        width: 90%;
+    }
+
+    .modal-header h3[b-5ki5grmzyg] {
+        font-size: 1.2rem;
+    }
+
+    .btn[b-5ki5grmzyg] {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal[b-5ki5grmzyg] {
+        width: 80%;
+    }
+
+    .form-control[b-5ki5grmzyg] {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .btn[b-5ki5grmzyg] {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}

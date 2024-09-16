@@ -1,0 +1,72 @@
+@using Calendar.Models
+@using Calendar.Services
+@inject  LocalStorageService LocalStorageService
+
+<div class="day-container" @onclick="OpenSideBar" data-id="@Date">
+    @if (isTodoSet)
+    {
+        <div class="day-icon">
+            <img src="img/plans.svg" width="30px" height="30px"/>
+        </div>
+    }
+    @if (IsCurrent)
+    {
+        <div class="current-day">
+            <span>@dayNumber</span>
+        </div>
+    }
+    else if (IsOffset)
+    {
+        <div class="offset-day">
+            <span>@dayNumber</span>
+        </div>
+    }
+    else
+    {
+        <span>@dayNumber</span>
+    }
+</div>
+
+
+@code {
+    [Parameter] public int dayNumber { get; set; }
+    [Parameter] public bool IsCurrent { get; set; } = false;
+    [Parameter] public bool IsOffset { get; set; } = false;
+    [Parameter] public string Date { get; set; } = string.Empty;
+    [Parameter] public EventCallback<string> OnDateSelect { get; set; }
+    
+    [CascadingParameter]
+    public string DateToUpdate
+    {
+        set
+        {
+            if (value != Date)
+            {
+                return;
+            }
+
+            StateHasChanged();
+        }
+    }
+
+    private bool isTodoSet = false;
+    private List<TodoItem> todos = [];
+
+    protected override async Task OnParametersSetAsync()
+    {
+        todos = await GetTodoFromLocalStorage();
+        isTodoSet = todos.Count > 0;
+    }
+
+    private async Task<List<TodoItem>> GetTodoFromLocalStorage()
+    {
+        var todos = await LocalStorageService.GetTodosFromLocalStorage(Date);
+        return todos;
+    }
+
+    private async Task OpenSideBar()
+    {
+        await OnDateSelect.InvokeAsync(Date);
+    }
+
+}

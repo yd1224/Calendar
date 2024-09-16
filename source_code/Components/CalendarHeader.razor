@@ -1,0 +1,17 @@
+<div class="calendar-controls">
+    <div class="arrow" @onclick="GoToPreviousMonth">
+        <img class="arrow-left-img" src="img/left-arrow.svg">
+    </div>
+    <h3 class="calendar-header">@currentMonth @currentYear</h3>
+    <div class="arrow" @onclick="GoToNextMonth">
+        <img class="arrow-right-img" src="img/left-arrow.svg">
+    </div>
+</div>
+
+
+@code{
+    [Parameter] public EventCallback GoToPreviousMonth { get; set; }
+    [Parameter] public EventCallback GoToNextMonth { get; set; }
+    [Parameter] public string currentMonth { get; set; } = string.Empty;
+    [Parameter] public int currentYear { get; set; }
+}

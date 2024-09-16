@@ -1,0 +1,67 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = Calendar
+build_property.RootNamespace = Calendar
+build_property.ProjectDir = /Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/Components/WeekDay.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9XZWVrRGF5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/Components/WeekDayNamesRow.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9XZWVrRGF5TmFtZXNSb3cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/Components/WeekRow.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9XZWVrUm93LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L01haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/Components/CalendarComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9DYWxlbmRhckNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-0wq3tx6s8x
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/Components/CalendarHeader.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9DYWxlbmRhckhlYWRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-kyotdbf0wc
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/Components/DateEventsModal.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9EYXRlRXZlbnRzTW9kYWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-5ki5grmzyg
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/Components/Day.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9EYXkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-y9xcy0xwoy
+
+[/Users/elizavetademcenko/MyFolders/projects/Calendar/Calendar/Components/SideBar.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9TaWRlQmFyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-dqtsezjdvt

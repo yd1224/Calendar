@@ -1,0 +1,78 @@
+@using System.Globalization
+
+<div class="week-row">
+    @foreach (var day in Days)
+    {
+        if (day == CurrentDay)
+        {
+            <Day OnDateSelect="@OnDateSelect" dayNumber="@day" IsCurrent="true" Date="@GenerateDate(day)"/>
+        }
+        else if (day <= 0 || day > DaysInMonth)
+        {
+            var offsetDay = GenerateNextOrPreviousMonthDate(day);
+            <Day OnDateSelect="@OnDateSelect" IsOffset="true" dayNumber="@offsetDay.Day" Date="@offsetDay.ToString("dd.MM.yyyy")"/>
+        }
+        else
+        {
+            <Day OnDateSelect="@OnDateSelect" dayNumber="@day" Date="@GenerateDate(day)"/>
+        }
+    }
+</div>
+
+
+@code {
+    [Parameter] public List<int> Days { get; set; } = [];
+    [Parameter] public int? CurrentDay { get; set; }
+    [Parameter] public int CurrentMonth { get; set; }
+    [Parameter] public int? CurrentYear { get; set; }
+    [Parameter] public EventCallback<string> OnDateSelect { get; set; }
+
+    private int DaysInMonth;
+
+    protected override void OnParametersSet()
+    {
+        if (CurrentMonth != 0 && CurrentYear != null)
+        {
+            DaysInMonth = DateTime.DaysInMonth((int)CurrentYear, CurrentMonth);
+        }
+    }
+
+    private DateTime GenerateNextOrPreviousMonthDate(int offset)
+    {
+        if (CurrentYear == null)
+        {
+            throw new ArgumentException("CurrentYear and CurrentMonth must not be null.");
+        }
+
+        var year = CurrentYear ?? DateTime.Now.Year;
+        var month = CurrentMonth;
+        DateTime dateTime;
+        if (offset > 0)
+        {
+            var day = offset - DateTime.DaysInMonth(year, month);
+
+            dateTime = month == 12
+                ? new DateTime(day: day, month: 1, year: year + 1)
+                : new DateTime(day: day, month: month + 1, year: year);
+            return dateTime;
+        }
+
+        var targetDay = offset;
+        var previousMonth = month == 1 ? 12 : month - 1;
+        var previousYear = month == 1 ? year - 1 : year;
+
+        var lastDayInPreviousMonth = DateTime.DaysInMonth(previousYear, previousMonth);
+        var adjustedDay = lastDayInPreviousMonth + targetDay;
+
+        var date = new DateTime(day: adjustedDay, month: previousMonth, year: previousYear);
+
+        return date;
+    }
+
+    private string GenerateDate(int day)
+    {
+        var dateTime = new DateTime(day: day, month: CurrentMonth, year: CurrentYear ?? DateTime.Now.Year);
+        return dateTime.ToString("dd.MM.yyyy");
+    }
+
+}

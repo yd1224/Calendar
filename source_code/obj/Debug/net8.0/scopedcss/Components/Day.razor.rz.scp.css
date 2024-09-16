@@ -1,0 +1,73 @@
+.day-icon[b-y9xcy0xwoy] {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.day-icon:hover[b-y9xcy0xwoy] {
+    transform: scale(1.1);
+}
+
+.current-day[b-y9xcy0xwoy] {
+    background-color: #4285f4;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.offset-day[b-y9xcy0xwoy] {
+    color: #b0b0b0;
+}
+
+@media (max-width: 970px) {
+    img[b-y9xcy0xwoy] {
+        width: 25px;
+        height: 25px;
+    }
+
+    .day-icon[b-y9xcy0xwoy] {
+        top: 1px;
+        right: 1px;
+        padding: 1px;
+    }
+}
+
+@media (max-width: 768px) {
+    img[b-y9xcy0xwoy] {
+        width: 23px;
+        height: 23px;
+    }
+
+    .day-icon[b-y9xcy0xwoy] {
+        right: 0px;
+        padding: 0px;
+    }
+}
+
+@media (max-width: 540px) {
+    .current-day[b-y9xcy0xwoy] {
+        width: 30px;
+        height: 30px;
+    }
+
+    img[b-y9xcy0xwoy] {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .current-day[b-y9xcy0xwoy] {
+        width: 21px;
+        height: 21px;
+    }
+}

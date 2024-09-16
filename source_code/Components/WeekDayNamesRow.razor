@@ -1,0 +1,20 @@
+<div class="week-row">
+    @foreach (var dayName in WeekDaysName)
+    {
+        <WeekDay>@dayName</WeekDay>
+    }
+</div>
+
+
+@code {
+    private List<string> WeekDaysName = new()
+    {
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat",
+        "Sun"
+    };
+}

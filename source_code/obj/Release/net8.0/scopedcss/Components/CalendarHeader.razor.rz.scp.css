@@ -1,0 +1,46 @@
+.calendar-controls[b-kyotdbf0wc] {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    padding: 10px;
+    background-color: #4285f4;
+    color: white;
+    height: 60px;
+}
+
+.calendar-header[b-kyotdbf0wc] {
+    font-size: 20px;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.arrow[b-kyotdbf0wc] {
+    cursor: pointer;
+    padding: 10px;
+    width: 20px;
+    display: flex;
+    text-align: center;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.arrow img[b-kyotdbf0wc] {
+    width: 60px;
+    padding-right: 6px;
+    cursor: pointer;
+}
+
+.arrow-right-img[b-kyotdbf0wc] {
+    transform: rotate(180deg);
+}
+
+.arrow:hover[b-kyotdbf0wc] {
+    background-color: rgba(255, 255, 255, 0.4);
+}

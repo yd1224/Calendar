@@ -1,0 +1,537 @@
+/* /Components/CalendarComponent.razor.rz.scp.css */
+.calendar[b-0wq3tx6s8x] {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.calendar-body[b-0wq3tx6s8x] {
+    height: 100%;
+    display: flex;
+}
+
+.calendar-container[b-0wq3tx6s8x] {
+    flex-grow: 1;
+    transition: transform 0.5s ease-in-out;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 1fr;
+    grid-gap: 1px;
+    background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .calendar[b-0wq3tx6s8x] {
+        max-width: 100%;
+    }
+}
+
+.left[b-0wq3tx6s8x] {
+    animation-name: left-b-0wq3tx6s8x;
+    animation-duration: 0.5s;
+}
+
+@keyframes left-b-0wq3tx6s8x {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.right[b-0wq3tx6s8x] {
+    animation-name: right-b-0wq3tx6s8x;
+    animation-duration: 0.5s;
+}
+
+@keyframes right-b-0wq3tx6s8x {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.side-bar-opener[b-0wq3tx6s8x] {
+    align-content: center;
+    position: absolute;
+    top: 300px;
+    cursor: pointer;
+    z-index: 200;
+    background-color: #2f71ff;
+    border-radius: 0 20px 20px 0;
+}
+
+.side-bar-opener img[b-0wq3tx6s8x] {
+    transform: rotate(180deg);
+}
+
+[b-0wq3tx6s8x] .week-row {
+    display: contents;
+}
+
+[b-0wq3tx6s8x] .day-container {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    height: 100%;
+    position: relative;
+}
+
+[b-0wq3tx6s8x] .day-name {
+    pointer-events: none;
+    text-transform: uppercase;
+    color: #a4a4a4;
+    font-weight: 600;
+}
+
+[b-0wq3tx6s8x] .day-container:not(:has(.day-name)):hover {
+    cursor: pointer;
+    background-color: #f1f3f4;
+}
+
+@media (max-width: 768px) {
+    [b-0wq3tx6s8x] .day-container {
+        font-size: 20px;
+    }
+
+    [b-0wq3tx6s8x] .day-name {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 540px) {
+    [b-0wq3tx6s8x] .day-container {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 420px) {
+    [b-0wq3tx6s8x] .day-container {
+        font-size: 15px;
+    }
+
+    [b-0wq3tx6s8x] .day-name {
+        font-size: 14px;
+    }
+}
+
+
+/* /Components/CalendarHeader.razor.rz.scp.css */
+.calendar-controls[b-kyotdbf0wc] {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    padding: 10px;
+    background-color: #4285f4;
+    color: white;
+    height: 60px;
+}
+
+.calendar-header[b-kyotdbf0wc] {
+    font-size: 20px;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.arrow[b-kyotdbf0wc] {
+    cursor: pointer;
+    padding: 10px;
+    width: 20px;
+    display: flex;
+    text-align: center;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.arrow img[b-kyotdbf0wc] {
+    width: 60px;
+    padding-right: 6px;
+    cursor: pointer;
+}
+
+.arrow-right-img[b-kyotdbf0wc] {
+    transform: rotate(180deg);
+}
+
+.arrow:hover[b-kyotdbf0wc] {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+/* /Components/DateEventsModal.razor.rz.scp.css */
+.overlay[b-5ki5grmzyg] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+
+.modal[b-5ki5grmzyg] {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 550;
+    padding: 20px;
+    max-width: 90%;
+}
+
+.modal-header[b-5ki5grmzyg] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.modal-header h3[b-5ki5grmzyg] {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.modal-close[b-5ki5grmzyg] {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.modal-close:hover[b-5ki5grmzyg] {
+    color: #f44336;
+}
+
+.modal-content[b-5ki5grmzyg] {
+    margin-top: 20px;
+}
+
+.form-group[b-5ki5grmzyg] {
+    margin-bottom: 15px;
+}
+
+.form-group label[b-5ki5grmzyg] {
+    font-weight: 600;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control[b-5ki5grmzyg] {
+    width: 90%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: #f9f9f9;
+}
+
+.form-control:focus[b-5ki5grmzyg] {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+textarea.form-control[b-5ki5grmzyg] {
+    height: 75px;
+    resize: none;
+}
+
+.btn[b-5ki5grmzyg] {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover[b-5ki5grmzyg] {
+    background-color: #0056b3;
+}
+
+.modal[b-5ki5grmzyg] {
+    animation: fadeIn-b-5ki5grmzyg 0.3s ease-in-out;
+}
+
+@keyframes fadeIn-b-5ki5grmzyg {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .modal[b-5ki5grmzyg] {
+        width: 90%;
+    }
+
+    .modal-header h3[b-5ki5grmzyg] {
+        font-size: 1.2rem;
+    }
+
+    .btn[b-5ki5grmzyg] {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal[b-5ki5grmzyg] {
+        width: 80%;
+    }
+
+    .form-control[b-5ki5grmzyg] {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .btn[b-5ki5grmzyg] {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+/* /Components/Day.razor.rz.scp.css */
+.day-icon[b-y9xcy0xwoy] {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.day-icon:hover[b-y9xcy0xwoy] {
+    transform: scale(1.1);
+}
+
+.current-day[b-y9xcy0xwoy] {
+    background-color: #4285f4;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.offset-day[b-y9xcy0xwoy] {
+    color: #b0b0b0;
+}
+
+@media (max-width: 970px) {
+    img[b-y9xcy0xwoy] {
+        width: 25px;
+        height: 25px;
+    }
+
+    .day-icon[b-y9xcy0xwoy] {
+        top: 1px;
+        right: 1px;
+        padding: 1px;
+    }
+}
+
+@media (max-width: 768px) {
+    img[b-y9xcy0xwoy] {
+        width: 23px;
+        height: 23px;
+    }
+
+    .day-icon[b-y9xcy0xwoy] {
+        right: 0px;
+        padding: 0px;
+    }
+}
+
+@media (max-width: 540px) {
+    .current-day[b-y9xcy0xwoy] {
+        width: 30px;
+        height: 30px;
+    }
+
+    img[b-y9xcy0xwoy] {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 420px) {
+    .current-day[b-y9xcy0xwoy] {
+        width: 21px;
+        height: 21px;
+    }
+}
+/* /Components/SideBar.razor.rz.scp.css */
+.side-bar[b-dqtsezjdvt] {
+    width: 300px;
+    position: relative;
+    background-color: #f0f4ff;
+    border-radius: 10px;
+    z-index: 300;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    animation: slideIn-b-dqtsezjdvt 0.5s ease-out forwards;
+}
+
+@keyframes slideIn-b-dqtsezjdvt {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.side-bar-content[b-dqtsezjdvt] {
+    padding: 20px;
+}
+
+.side-bar-header[b-dqtsezjdvt] {
+    border-bottom: 2px solid #d0e4ff;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.sb-header-date[b-dqtsezjdvt] {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2f6db2;
+}
+
+.todo-list[b-dqtsezjdvt] {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todo-item[b-dqtsezjdvt] {
+    flex-direction: column-reverse;
+    background-color: #e6f0ff;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 1s;
+    cursor: move;
+    justify-content: space-between;
+}
+
+.dragging[b-dqtsezjdvt] {
+    opacity: 0.1;
+}
+
+.todo-body[b-dqtsezjdvt] {
+    width: 100%;
+}
+
+.todo-title[b-dqtsezjdvt] {
+    font-size: 1.1em;
+    color: #1e518b;
+    font-weight: bold;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+}
+
+.to-do-delete[b-dqtsezjdvt] {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.to-do-delete:hover[b-dqtsezjdvt] {
+    color: #b32121;
+}
+
+.todo-description[b-dqtsezjdvt] {
+    font-size: 0.9em;
+    color: #4d7ba8;
+    overflow-wrap: break-word;
+}
+
+.todo-footer[b-dqtsezjdvt] {
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    left: 230px;
+    bottom: 50px;
+    padding-top: 15px;
+}
+
+.todo-add[b-dqtsezjdvt] {
+    background-color: #2f6db2;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.todo-add:hover[b-dqtsezjdvt] {
+    background-color: #1e518b;
+}
+
+.todo-control[b-dqtsezjdvt] {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sb-header-close[b-dqtsezjdvt] {
+    position: absolute;
+    right: 5px;
+}
+
+.sb-header-close img[b-dqtsezjdvt] {
+    width: 45px;
+    cursor: pointer;
+}
+
+.created-at[b-dqtsezjdvt] {
+    font-size: 10px;
+    color: #2f6db2;
+}
+
+@media (max-width: 768px) {
+    .side-bar[b-dqtsezjdvt] {
+        position: absolute;
+        width: 100vw;
+    }
+}

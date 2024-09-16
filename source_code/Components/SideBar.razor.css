@@ -1,0 +1,141 @@
+.side-bar {
+    width: 300px;
+    position: relative;
+    background-color: #f0f4ff;
+    border-radius: 10px;
+    z-index: 300;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.side-bar-content {
+    padding: 20px;
+}
+
+.side-bar-header {
+    border-bottom: 2px solid #d0e4ff;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.sb-header-date {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2f6db2;
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.todo-item {
+    flex-direction: column-reverse;
+    background-color: #e6f0ff;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 1s;
+    cursor: move;
+    justify-content: space-between;
+}
+
+.dragging {
+    opacity: 0.1;
+}
+
+.todo-body {
+    width: 100%;
+}
+
+.todo-title {
+    font-size: 1.1em;
+    color: #1e518b;
+    font-weight: bold;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+}
+
+.to-do-delete {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.to-do-delete:hover {
+    color: #b32121;
+}
+
+.todo-description {
+    font-size: 0.9em;
+    color: #4d7ba8;
+    overflow-wrap: break-word;
+}
+
+.todo-footer {
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    left: 230px;
+    bottom: 50px;
+    padding-top: 15px;
+}
+
+.todo-add {
+    background-color: #2f6db2;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.todo-add:hover {
+    background-color: #1e518b;
+}
+
+.todo-control {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sb-header-close {
+    position: absolute;
+    right: 5px;
+}
+
+.sb-header-close img {
+    width: 45px;
+    cursor: pointer;
+}
+
+.created-at {
+    font-size: 10px;
+    color: #2f6db2;
+}
+
+@media (max-width: 768px) {
+    .side-bar {
+        position: absolute;
+        width: 100vw;
+    }
+}

@@ -1,0 +1,103 @@
+@using Calendar.Models
+@using Calendar.Services
+@inject IJSRuntime jsRuntime
+@inject LocalStorageService LocalStorageService
+
+@if (isModalOpen)
+{
+    <DateEventsModal Date="@Date" CloseModal="CloseModal" UpdateDay="UpdateDayComponent"/>
+}
+
+<div class="side-bar">
+    <div class="side-bar-content">
+        <div class="side-bar-header">
+            <span class="sb-header-date">ToDos for @Date</span>
+            <div class="sb-header-close" @onclick="CloseSideBar">
+                <img src="img/left-arrow.svg"/>
+            </div>
+        </div>
+        <div class="side-bar-body">
+            <div class="todo-list" id="container">
+                @foreach (var todo in TodoItems)
+                {
+                    <div class="todo-item" draggable="true">
+                        <div class="todo-body">
+                            <div class="todo-title">
+                                <span>@todo.Title</span>
+                            </div>
+                            <div class="todo-description">
+                                <span>@todo.Description</span>
+                            </div>
+                        </div>
+                        <div class="todo-control">
+                            <div class="created-at-box">
+                                <span class="created-at">@todo.Date.ToString("dd.MM.yyyy HH:mm")</span>
+                            </div>
+                            <span class="to-do-delete" @onclick="() => DeleteToDoItem(todo)">x</span>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="todo-footer">
+                <div class="todo-add" @onclick="@OpenModal">
+                    <span>+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public EventCallback CloseSideBar { get; set; }
+    [Parameter] public EventCallback<string> UpdateDayComponent { get; set; }
+    [Parameter] public string Date { get; set; } = string.Empty;
+    
+    private List<TodoItem> TodoItems { get; set; } = [];
+    private bool isModalOpen = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await jsRuntime.InvokeVoidAsync("initalizeSlidingList");
+            StateHasChanged();
+        }
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        TodoItems = await GetTodoFromLocalStorage();
+    }
+
+    private async Task<List<TodoItem>> GetTodoFromLocalStorage()
+    {
+        var todos = await LocalStorageService.GetTodosFromLocalStorage(Date);
+        return todos;
+    }
+
+    private async Task DeleteToDoItem(TodoItem todoToDelete)
+    {
+        TodoItems.Remove(todoToDelete);
+
+        await LocalStorageService.SetToDosToLocalStorage(Date, TodoItems);
+
+        StateHasChanged();
+    }
+
+    public void OpenModal()
+    {
+        if (isModalOpen)
+            return;
+
+        isModalOpen = true;
+        StateHasChanged();
+    }
+
+    public void CloseModal()
+    {
+        isModalOpen = false;
+        StateHasChanged();
+    }
+
+}
